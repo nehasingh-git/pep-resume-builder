@@ -1,9 +1,5 @@
 
 
-.header{
-  height: 55px;
-  background: whitesmoke;
-}
 
 
 
@@ -74,132 +70,8 @@ ul {
   margin-top: 50px;
 }
 
-.header {
-  position: fixed !important;
-  top: 0;
-  width: 100%;
-  z-index: 9990;
-  background-color: #FFF;
-  border-left: none !important;
-  border-top: none !important;
-  border-right: none !important;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .25);
-  padding: 0 3rem 0 2.6rem
-}
-
 .text-blue {
   color: #5ae4ce !important;
-}
-
-.nav {
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  z-index: 9999999999;
-  position: relative;
-
-}
-
-.nav a {
-  color: #303D46;
-  white-space: nowrap;
-  line-height: 1;
-  text-decoration: none !important
-}
-
-.nav ul {
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  z-index: 9999999999;
-  position: relative;
-
-}
-
-.nav li {
-  vertical-align: middle;
-  display: inline-block;
-  height: auto;
-  margin-bottom: 0;
-  padding: 2rem;
-  box-sizing: border-box;
-  width: auto;
-  z-index: 9999;
-}
-
-.header .btnv-1,
-.header .btnv-3 {
-  font-size: 2.1rem !important;
-  padding: .7rem 1.5rem !important;
-}
-
-
-.header .logo {
-  position: absolute;
-  left: 0;
-  width: 59px;
-  height: 50px;
-  top: 30%;
-  margin-top: -13px;
-  background: url(/images/logo.png) no-repeat;
-  background-size: 59px 50px
-}
-
-
-
-
-
-
-.nav ul {
-  float: right;
-  justify-content: flex-end;
-  display: flex;
-  align-items: center;
-  flex: 1;
-  height: 100%;
-  margin-bottom: 0;
-  width: auto
-}
-
-.nav li {
-  vertical-align: middle;
-  display: inline-block;
-  height: auto;
-  margin-bottom: 0;
-  padding: 2rem;
-  box-sizing: border-box;
-  width: auto;
-  z-index: 9999
-}
-
-
-.nav .signin {
-  padding-left: 0;
-  padding-right: 0
-}
-
-.nav .signup {
-  border: 2px solid #5ae4ce;
-  padding: 7px !important;
-  border-radius: 0.6rem;
-}
-
-.nav .signup:hover {
-  background: linear-gradient(45deg, #1DBFAF 0, #1EAEDB 85%, #1EAEDB 100%);
-}
-
-.nav .signup a:hover {
-  color: white !important;
-}
-
-.nav .signin a:hover {
-  color: black !important;
-}
-
-
-.nav a:hover {
-  color: #5ae4ce;
-  text-decoration: underline red;
 }
 
 .lp-resume {
@@ -214,28 +86,7 @@ ul {
 
 
 
-.header {
-  height: 56px
-}
 
-
-@media only screen and (max-width:600px) {
-
-  .header-padding-top,
-  .main {
-    padding-top: 88px;
-    padding-bottom: 100px
-  }
-
-  .main.header-no-padding-no-extra {
-    padding-top: 48px
-  }
-
-  .header {
-    padding-top: 0;
-    height: 48px
-  }
-}
 
 .btn {
   position: relative;
