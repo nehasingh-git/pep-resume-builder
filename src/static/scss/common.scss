@@ -1,4 +1,4 @@
-.center{
+.center {
     text-align: center;
 }
 
@@ -6,15 +6,27 @@
     align-items: center;
 }
 
-.full-height{
+.full-height {
     height: 100%;
 }
 
-body{
+body {
     font-family: Josefin Sans;
 }
 
-a{
+a {
     text-decoration: none;
     color: #7c7171;
+
+    &:hover {
+        color: #5ae4ce;
+        text-decoration: underline red;
+    }
+}
+
+
+.container {
+    width: 100%;
+
+   
 }

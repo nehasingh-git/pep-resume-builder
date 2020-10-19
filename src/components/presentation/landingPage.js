@@ -3,7 +3,7 @@ import logo from "../../static/images/resume.png";
 import { NavLink } from "react-router-dom";
 const Lp = () => {
     return (    
-        <div className="container  lp-page center">          
+        <div className="container blue lp-page center">          
         <div className="section">
          <h1>Create a resume that stands out</h1>
            <p >Create a Resume that perfectally describes your skils and match job profile.</p>
