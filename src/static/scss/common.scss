@@ -64,11 +64,7 @@ ul {
   height: 100%;
 }
 
-.footer {
-  height: 255px;
-  background: #292727;
-  margin-top: 50px;
-}
+
 
 .text-blue {
   color: #5ae4ce !important;
@@ -83,11 +79,6 @@ ul {
     padding-top: 2.75rem;
   }
 }
-
-
-
-
-
 .btn {
   position: relative;
   width: 100%;
@@ -152,6 +143,7 @@ p,
 p span {
   font-size: 2.1rem
 }
+
 
 
 .text-bolded,
@@ -251,14 +243,13 @@ h1 span {
 .container {
   padding-top: 56px;
   width: 100%;
+  &.med {
+    width: 90%;
+    margin: 0px 5%;
+  }  
 }
 
-.container.med {
-  padding-top: 53px;
-  width: 90%;
-  margin: 0px 5%;
-}
-
+.container
 .container .section {
   width: 100%;
   padding-top: 20px;
@@ -429,7 +420,7 @@ input {
   font-weight: 500;
   transition: all .2s ease-in-out;
   border-left: 0 solid #3458da;
-  width: 100%
+ // width: 100%
 }
 
 .input-group .error {
