@@ -1,19 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from '../../static/images/logo.png';
+import logo from "../../static/images/logo.png";
 const header = () => {
   return (  
-  
   <header className="header">
   <nav className="nav">
-    <div className="logo-container full-height">
-    <a href="/" className="holder-logo">
-        <img class="logo" src={logo}></img>
+      <a href="/" className="holder-logo">
+        <img className='logo' src={logo}></img>
       </a> 
-    </div>
-  
-      <div   className="header-link-container full-height">
-        <div className="full-height">
+        <div className="header-links full-height">
           <ul  >
             <li className="signup ">
               <NavLink className=" btnv-1" to="/register">
@@ -40,7 +35,6 @@ const header = () => {
           </ul>
             
       </div>   
-      </div>
     </nav>
   </header>
 
