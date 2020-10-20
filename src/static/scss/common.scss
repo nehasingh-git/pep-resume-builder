@@ -20,7 +20,7 @@ a {
 
     &:hover {
         color: #5ae4ce;
-        text-decoration: underline red;
+        text-decoration: underline #ebebeb;
     }
 }
 
@@ -29,4 +29,24 @@ a {
     width: 100%;
 
    
+}
+
+.section{
+    margin-top:100px;
+}
+.btn{
+
+    border-radius: 5px;
+    height: 4rem;
+    padding: 1%;
+    border: none;
+    position: relative;
+    background: linear-gradient(45deg, #1DBFAF 0, #1EAEDB 85%, #1EAEDB 100%);
+    color: white;
+    
+    &:hover {
+        color: black;
+        background: white;
+        border: 2px solid #5ae4ce;
+      }
 }
