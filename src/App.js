@@ -2,7 +2,6 @@ import React from 'react';
 
 import './static/scss/app.scss';
 import 'react-router-dom';
-// import Contact from './components/presentation/contact';
 import { Route,Switch } from 'react-router-dom';
 import Header from './components/presentation/header';
 import Footer from './components/presentation/footer';
