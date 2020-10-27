@@ -1,8 +1,20 @@
 import React from 'react';
 import {skinCodes} from '../../constants/typeCodes';
 import {NavLink} from 'react-router-dom';
-const GettingStarted= ()=>{
-        return (    
+ 
+
+class GettingStarted extends React.Component{
+     constructor(props, context) {
+        super(props, context);
+        this.state = {
+          'name': ''
+        };
+      }
+      onChange = (event) => {
+          this.props.history.push('contact');
+      }
+      render(){
+        return (  
             <div className="container med gettingStarted">
                 <div className="section">
                     <h1 className=" center">
@@ -12,11 +24,11 @@ const GettingStarted= ()=>{
                     </p>
                     <div className="styleTemplate ">
                     {
-                        skinCodes.map((value) => {
-                            return( <div className="template-card rounded-border">
+                        skinCodes.map((value,index) => {
+                            return( <div key={index} className="template-card rounded-border">
                                   <i className="hide" ></i>
                                 <img  className='' src={'/images/' + value + '.svg'}/>
-                                <button type="button"   className='btn-select-theme'>USE TEMPLATE</button>
+                                <button type="button" onClick={this.onChange}  className='btn-select-theme'>USE TEMPLATE</button>
                             </div>);
     
                         })
@@ -25,7 +37,9 @@ const GettingStarted= ()=>{
                 
                 </div>
             </div>
-            );
+        );
+    }
 }
+ 
 export default GettingStarted;
 
