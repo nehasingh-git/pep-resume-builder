@@ -10,15 +10,18 @@
     height: 100%;
 }
 
-.text-upper{
+.text-upper {
     text-transform: uppercase;
 }
-.bold{
+
+.bold {
     font-weight: bold;
 }
-.text-underline{
+
+.text-underline {
     text-decoration: underline;
 }
+
 body {
     font-family: Josefin Sans;
 }
@@ -258,8 +261,8 @@ ul {
 }
 
 
- 
- 
+
+
 
 
 .regular-font,
@@ -397,12 +400,13 @@ h1 span {
     .about-us-img {
         height: 300px;
     }
+
     .contact-right-section {
         width: 45%;
     }
 }
 
-  
+
 
 .rounded-border {
     border-radius: 5%;
@@ -535,14 +539,49 @@ h1 span {
 
     .template-card {
         flex: 1 0 40%;
-        margin: 12px;
+        margin: 2% 25%;
         height: 300px;
         overflow: hidden;
         box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+
+        .btn-select-theme {
+            border: none;
+            border: none;
+            padding: 5%;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #1DBFAF 0, #1EAEDB 85%, #1EAEDB 100%);
+            color: white;
+            border-radius: 0.6rem;
+            position: relative;
+            top: -190px;
+            align-items: center;
+            left: 16%;
+            width: 66%;
+            z-index: 1000;
+      
+            &:hover {
+              display: block;
+            }
+          }
     }
+
+    .styleTemplate {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
 }
 
 .template-card {
+    &.active {
+        border: 1px solid red;
+    }
+
+    img {
+        height: 100%;
+    }
+
     .selected {
 
         font-size: 2rem;
