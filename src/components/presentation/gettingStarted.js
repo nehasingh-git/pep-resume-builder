@@ -1,18 +1,25 @@
 import React from 'react';
 import {skinCodes} from '../../constants/typeCodes';
-import {NavLink} from 'react-router-dom';
- 
+import { connect } from 'react-redux'
+import * as documentActions from '../../actions/documentActions';
+import { bindActionCreators } from 'redux';
 
 class GettingStarted extends React.Component{
      constructor(props, context) {
         super(props, context);
         this.state = {
-          'name': ''
-        };
+            skinCd: this.props.skinCd
+          }
       }
-      onChange = (event) => {
-          this.props.history.push('contact');
+ 
+      componentWillReceiveProps(nextProps){
+        this.setState({skinCd:nextProps.skinCd})
       }
+      onChange = (skinCd) => {
+        this.props.documentActions.setSkinCd(skinCd);          
+        this.props.history.push('contact');
+      }
+
       render(){
         return (  
             <div className="container med gettingStarted">
@@ -26,9 +33,9 @@ class GettingStarted extends React.Component{
                     {
                         skinCodes.map((value,index) => {
                             return( <div key={index} className="template-card rounded-border">
-                                  <i className="hide" ></i>
+                                  <i className={(value == this.state.skinCd? 'selected fa fa-check' :'hide') } ></i>
                                 <img  className='' src={'/images/' + value + '.svg'}/>
-                                <button type="button" onClick={this.onChange}  className='btn-select-theme'>USE TEMPLATE</button>
+                                <button type="button" onClick={()=>this.onChange(value)}  className='btn-select-theme'>USE TEMPLATE</button>
                             </div>);
     
                         })
@@ -40,6 +47,20 @@ class GettingStarted extends React.Component{
         );
     }
 }
- 
-export default GettingStarted;
+  
+const mapStateToProps=(state)=>{
+    return {
+        skinCd: state.document.skinCd
+    }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        // setSkinCd:(skinCd)=>(dispatch({type: actionTypes.SET_SKIN, skinCd : skinCd}))
+        // setSkinCd:(skinCd)=>(dispatch(documentActions.setSkinCd(skinCd))),
+        // updateSkinCd:(skinCd)=>(dispatch(documentActions.updateSkinCd(skinCd)))
+        documentActions:bindActionCreators(documentActions, dispatch)
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GettingStarted)
 

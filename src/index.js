@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom'; 
-import { Provider as ReduxProvider } from "react-redux";
-import {createStore, applyMiddleware} from React;
-import rootReducer from './reducers/rootRedocer';
-const store =createStore(initialState)
+import { Provider } from 'react-redux';
+import {createStore} from 'redux';
+import rootReducer from './reducers/rootReducer';
+const reduxStore = createStore(rootReducer)
 
 ReactDOM.render(
+  <Provider store={reduxStore}>
   <BrowserRouter>
     <App />
-  </BrowserRouter>,
+  </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );

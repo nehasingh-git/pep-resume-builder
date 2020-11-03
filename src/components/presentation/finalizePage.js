@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
 
 import ResumePreview from './resumePreview'
 import {skinCodes, fieldCd} from './../../constants/typeCodes';
@@ -10,32 +9,9 @@ class Finalize extends React.Component {
   constructor(props,context) {
     super(props,context)
     this.state = {
-      educationSection: 
-        {
-        SCHO: "Netaji Subhas University of Technology ",
-        GRCG: "7.7", 
-        GRDT: "Jan",
-        CITY: "Pitampura",
-        DGRE: "B.Tech(IT)",
-        GRYR: "2021"
-
-      },
-      contactSection: {
-        FNAM: "Neha", LNAM: "Singh",
-        EMAI: "test@mailinator.com", 
-        PHON: "24325436",
-        STRT: "kd14",
-        CITY: "Pitampura",
-        CNTY: "India",
-        EMAI: "test@mailinator.com",
-        PRSU:"A resume format is the layout of your resume.  The ideal resume format usually depends on how much work experience you have.   But what happens when you have none?  For a no-experience resume, we reco",
-        FNAM: "Neha",
-        LNAM: "Singh",
-        PHON: "24325436",
-        STAT: "Delhi",
-        STRT: "kd14",
-        ZIPC: "110034"
-      }
+      educationSection: this.props.educationSection,
+      contactSection:this.props.contactSection,
+      skinCd:this.props.skinCd
     }
   }
 
@@ -48,11 +24,33 @@ class Finalize extends React.Component {
   render() {
     const { educationSection, contactSection } = this.state
     return (
-      <div className="container med education" >
-        <div className="section ">
+      <div className="container med finalize-page" >
+        <div className="funnel-section ">
             <div className="finalize-preview-card ">
               <ResumePreview contactSection={contactSection} educationSection={educationSection}></ResumePreview>   
             </div>
+            <div className="finalize-settings">
+          <div className="section">
+            <h1 className=" center">
+              Select a resume template to get started</h1>
+            <p className=" center">
+              You’ll be able to edit and change this template later!
+            </p>
+            <div className="styleTemplate ">
+              {
+              skinCodes.map((value, index) => {
+              return( <div className="template-card rounded-border">
+
+                <i className={this.state.skinCd==value?'fa fa-check-circle selected':'hide'} aria-hidden="true"></i>
+                <img className={this.state.skinCd==value?'active':''} src={'/images/' + value + '.svg' } />
+                <button className="btn-select-theme" onClick={()=>this.onChange(value)} type='button'>USE TEMPLATE</button>
+              </div>);
+              })
+        }
+      </div>
+
+    </div>
+  </div>
         </div>
       </div>
     );
@@ -60,5 +58,13 @@ class Finalize extends React.Component {
 }
 
   
-export default  Finalize
 
+const mapStateToProps=(state)=>{
+  return {
+      contactSection:state.contactSection,
+      educationSection:state.educationSection,
+      skinCd:state.document.skinCd
+  }
+}
+
+export default connect(mapStateToProps,null)(Finalize)

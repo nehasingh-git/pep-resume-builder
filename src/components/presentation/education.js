@@ -10,32 +10,9 @@ class Education extends React.Component {
   constructor(props,context) {
     super(props,context)
     this.state = {
-      educationSection: 
-        {
-        SCHO: "Netaji Subhas University of Technology ",
-        GRCG: "7.7", 
-        GRDT: "Jan",
-        CITY: "Pitampura",
-        DGRE: "B.Tech(IT)",
-        GRYR: "2021"
-
-      },
-      contactSection: {
-        FNAM: "Neha", LNAM: "Singh",
-        EMAI: "test@mailinator.com", 
-        PHON: "24325436",
-        STRT: "kd14",
-        CITY: "Pitampura",
-        CNTY: "India",
-        EMAI: "test@mailinator.com",
-        PRSU:"A resume format is the layout of your resume.  The ideal resume format usually depends on how much work experience you have.   But what happens when you have none?  For a no-experience resume, we reco",
-        FNAM: "Neha",
-        LNAM: "Singh",
-        PHON: "24325436",
-        STAT: "Delhi",
-        STRT: "kd14",
-        ZIPC: "110034"
-      }
+      educationSection: this.props.educationSection,
+      contactSection:this.props.contactSection,
+      skinCd:this.props.skinCd
     }
   }
 
@@ -112,6 +89,15 @@ class Education extends React.Component {
   }
 }
 
+
   
-export default  Education
+const mapStateToProps=(state)=>{
+  return {
+      contactSection:state.contactSection,
+      educationSection:state.educationSection,
+      skinCd:state.document.skinCd
+  }
+}
+
+export default connect(mapStateToProps,null)(Education)
 
