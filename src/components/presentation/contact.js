@@ -2,6 +2,9 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import update from 'immutability-helper';
 import {fieldCd, skinCodes}  from '../../constants/typeCodes';
+import * as contactActions from '../../actions/contactActions';
+import { bindActionCreators } from 'redux';
+
 
 import ResumePreview from './resumePreview'
 import { connect } from "react-redux";
@@ -13,17 +16,18 @@ import { connect } from "react-redux";
               contactSection: this.props.contactSection,
               skinCd: this.props.skinCd
           };       
-    }
+   }
  
-  onChange=(event)=>{
+   onChange=(event)=>{
         var key =event.target.name;
         var val =event.target.value;
         this.setState({contactSection:update(this.state.contactSection,{$merge: {[key]:val}})});
     }
- onSubmit=()=>{
-    // database call
-    this.props.history.push('/education');
- }
+    onSubmit=()=>{
+        // database call
+        this.props.history.push('/education');
+        this.props.contactActions.add(this.state.contactSection);
+    }
 
   render() { 
     let {contactSection} = this.state;
@@ -115,7 +119,6 @@ import { connect } from "react-redux";
   }
 }
 
-
  
 const mapStateToProps=(state)=>{
   return {
@@ -124,4 +127,11 @@ const mapStateToProps=(state)=>{
   }
 }
 
-  export default connect(mapStateToProps,null)(Contact)
+
+const mapDispatchToProps=(dispatch)=>{
+    return{
+       contactActions:bindActionCreators(contactActions, dispatch)
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Contact)
+

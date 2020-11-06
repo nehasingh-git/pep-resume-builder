@@ -1,29 +1,15 @@
 {
     "document": {
         "documentId": null,
-        "skinCd": "skin3",
+        "skinCd": "",
         "userId": null
     },
     "educationSection": {
 
-        "SCHO": "Netaji Subhas University of Technology ",
-        "GRCG": "7.7", 
-        "GRDT": "Jan",
-        "CITY": "Pitampura",
-        "DGRE": "B.Tech(IT)",
-        "GRYR": "2021"
+      
     },
     "contactSection": {
-        "FNAM": "Neha", 
-        "LNAM": "Singh",
-        "EMAI": "test@mailinator.com", 
-        "PHON": "24325436",
-        "PROF": "Software Engineer",
-        "STRT": "kd14",
-        "CITY": "Pitampura",
-        "CNTY": "India",
-        "PRSU":"A resume format is the layout of your resume.  The ideal resume format usually depends on how much work experience you have.   But what happens when you have none?  For a no-experience resume, we reco",
-        "STAT": "Delhi",
-        "ZIPC": "110034"},
+       
+    },
     "skillSection": {}
 }

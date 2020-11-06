@@ -2,7 +2,9 @@ import React from "react";
 
 import ResumePreview from './resumePreview'
 import {skinCodes, fieldCd} from './../../constants/typeCodes';
+import * as documentActions from '../../actions/documentActions';
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
 class Finalize extends React.Component {
 
@@ -18,8 +20,9 @@ class Finalize extends React.Component {
   onChange = (event) => {
     this.setState({...this.state, educationSection: {...this.state.educationSection,  [event.target.name]: event.target.value  } })
   }
-  onSubmit = (e) => {
-   console.log(this.state.educationSection);
+  onChange = (skinCd) => {
+    this.props.documentActions.setSkinCd(skinCd);          
+    this.props.history.push('contact');
   }
   render() {
     const { educationSection, contactSection } = this.state
@@ -67,4 +70,12 @@ const mapStateToProps=(state)=>{
   }
 }
 
-export default connect(mapStateToProps,null)(Finalize)
+const mapDispatchToProps=(dispatch)=>{
+      return{
+          
+         documentActions:bindActionCreators(documentActions, dispatch)
+      }
+}
+    
+
+export default connect(mapStateToProps,mapDispatchToProps)(Finalize)

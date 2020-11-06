@@ -1,8 +1,9 @@
 import React from 'react';
 import {skinCodes} from '../../constants/typeCodes';
-import { connect } from 'react-redux'
-import * as documentActions from '../../actions/documentActions';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../actions/actionTypes';
 import { bindActionCreators } from 'redux';
+import * as  documentActions from '../../actions/documentActions'
 
 class GettingStarted extends React.Component{
      constructor(props, context) {
@@ -16,7 +17,8 @@ class GettingStarted extends React.Component{
         this.setState({skinCd:nextProps.skinCd})
       }
       onChange = (skinCd) => {
-        this.props.documentActions.setSkinCd(skinCd);          
+        this.props.documentActions.setSkinCd(skinCd); 
+        this.props.documentActions.changeFontFamily()         
         this.props.history.push('contact');
       }
 
@@ -56,10 +58,7 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        // setSkinCd:(skinCd)=>(dispatch({type: actionTypes.SET_SKIN, skinCd : skinCd}))
-        // setSkinCd:(skinCd)=>(dispatch(documentActions.setSkinCd(skinCd))),
-        // updateSkinCd:(skinCd)=>(dispatch(documentActions.updateSkinCd(skinCd)))
-        documentActions:bindActionCreators(documentActions, dispatch)
+        documentActions: bindActionCreators(documentActions, dispatch)
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(GettingStarted)

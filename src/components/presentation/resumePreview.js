@@ -18,7 +18,6 @@ class ResumePreview extends React.PureComponent{
         return '';
     }
 
-
     render() {    
         let {rvContact, rvEducation} = this;
         return (
@@ -27,7 +26,7 @@ class ResumePreview extends React.PureComponent{
                     <p className={'center contact-name text-upper' }> {rvContact(fieldCd.FirstName,' ')  + rvContact(fieldCd.LastName)}  </p>
                     <p className={'center address'}>{rvContact(fieldCd.City,', ') + rvContact(fieldCd.State,', ') +  rvContact(fieldCd.Country,', ') + rvContact(fieldCd.ZipCode,', ')}</p>
                     <p className={'center'}>{rvContact(fieldCd.Email ) }</p>
-                    <p className={'center'}>{rvContact(fieldCd.Phone) }</p>
+                    <p className={'center'}>{rvContact(fieldCd.Phone) } </p>
                 </div>
 
                 <div className={'profSummSection text-upper'}>                   

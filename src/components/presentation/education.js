@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import ResumePreview from './resumePreview'
 import {skinCodes, fieldCd} from './../../constants/typeCodes';
 import { connect } from 'react-redux'
+import * as educationActions from '../../actions/educationActions';
+import {bindActionCreators} from 'redux';
 
 class Education extends React.Component {
 
@@ -23,6 +25,7 @@ class Education extends React.Component {
   onSubmit = (e) => {
    console.log(this.state.educationSection);
    this.props.history.push('/finalize')
+   this.props.educationSection.add(this.state.educationSection);
   }
   render() {
     const { educationSection, contactSection } = this.state
@@ -99,5 +102,12 @@ const mapStateToProps=(state)=>{
   }
 }
 
-export default connect(mapStateToProps,null)(Education)
+const mapDispatchToProps=(dispatch)=>{
+  return{
+      
+     educationActions:bindActionCreators(educationActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Education)
 
