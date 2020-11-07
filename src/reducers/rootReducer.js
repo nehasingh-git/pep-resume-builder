@@ -6,8 +6,10 @@ import educationReducer from './educationReducer';
 import authReducer from './authReducer';  
 import documentReducer from './documentReducer';  
 import {combineReducers} from  'redux';
+import { reduxFirestore, firestoreReducer } from 'redux-firestore';
 
 const rootReducer = combineReducers({
+  firestore: firestoreReducer,
   auth:authReducer,
   contactSection:contactReducer,
   educationSection:educationReducer,

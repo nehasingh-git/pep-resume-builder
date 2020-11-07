@@ -9,15 +9,22 @@ class GettingStarted extends React.Component{
      constructor(props, context) {
         super(props, context);
         this.state = {
-            skinCd: this.props.skinCd
+            document: this.props.document
           }
       }
  
-      componentWillReceiveProps(nextProps){
-        this.setState({skinCd:nextProps.skinCd})
-      }
+    //   componentWillReceiveProps(nextProps){
+    //     this.setState({skinCd:nextProps.skinCd})
+    //   }
       onChange = (skinCd) => {
-        this.props.documentActions.setSkinCd(skinCd); 
+
+        if(this.state.document.id){
+        this.props.documentActions.updateSkinCd(this.state.document.id, skinCd);        
+        }
+        else{
+            this.props.documentActions.setSkinCd(skinCd); 
+        }
+
         this.props.history.push('contact');
       }
 
@@ -34,7 +41,7 @@ class GettingStarted extends React.Component{
                     {
                         skinCodes.map((value,index) => {
                             return( <div key={index} className="template-card rounded-border">
-                                  <i className={(value == this.state.skinCd? 'selected fa fa-check' :'hide') } ></i>
+                                  <i className={(value == this.state.document.skinCd? 'selected fa fa-check' :'hide') } ></i>
                                 <img  className='' src={'/images/' + value + '.svg'}/>
                                 <button type="button" onClick={()=>this.onChange(value)}  className='btn-select-theme'>USE TEMPLATE</button>
                             </div>);
@@ -51,7 +58,7 @@ class GettingStarted extends React.Component{
   
 const mapStateToProps=(state)=>{
     return {
-        skinCd: state.document.skinCd
+        document: state.document
     }
 }
 
