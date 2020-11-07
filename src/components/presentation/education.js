@@ -11,6 +11,7 @@ class Education extends React.Component {
 
   constructor(props,context) {
     super(props,context)
+    console.log(this.props);
     this.state = {
       educationSection: this.props.educationSection,
       contactSection:this.props.contactSection,
@@ -25,7 +26,7 @@ class Education extends React.Component {
   onSubmit = (e) => {
    console.log(this.state.educationSection);
    this.props.history.push('/finalize')
-   this.props.educationSection.add(this.state.educationSection);
+   this.props.educationActions.add(this.state.educationSection);
   }
   render() {
     const { educationSection, contactSection } = this.state

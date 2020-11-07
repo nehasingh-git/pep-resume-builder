@@ -18,7 +18,6 @@ class GettingStarted extends React.Component{
       }
       onChange = (skinCd) => {
         this.props.documentActions.setSkinCd(skinCd); 
-        this.props.documentActions.changeFontFamily()         
         this.props.history.push('contact');
       }
 
