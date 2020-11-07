@@ -11,5 +11,11 @@
     "contactSection": {
        
     },
-    "skillSection": {}
+    "skillSection": {},
+    "auth":{
+        "email":"",
+        "password":"",
+        "ErrorMessage":""
+
+    }
 }

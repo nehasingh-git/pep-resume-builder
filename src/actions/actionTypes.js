@@ -1,9 +1,12 @@
 export const SET_SKIN ="SET_SKIN";
 export const CHANGE_FONT_SIZE ="CHANGE_FONT_SIZE";
 export const CHANGE_FONT_FAMILY ="CHANGE_FONT_FAMILY";
+export const SIGN_IN ="SIGN_IN";
+export const SIGN_IN_FAILED ="SIGN_IN_FAILED";
 
 export const UPDATE_CONTACT = "UPDATE_CONTACT";
 export const UPDATE_SKIN ="UPDATE_SKIN";
 export const ADD_CONTACT ="ADD_CONTACT";
 export const ADD_EDUCATION ="ADD_EDUCATION";
 export const UPDATE_EDUCATION = "UPDATE_EDUCATION";
+export const SIGN_OUT ="SIGN_OUT";

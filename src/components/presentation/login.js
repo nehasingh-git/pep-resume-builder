@@ -1,29 +1,32 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
 import update from 'immutability-helper';
 import {fieldCd, skinCodes}  from '../../constants/typeCodes';
 
 import ResumePreview from './resumePreview'
 import { connect } from "react-redux";
+import {bindActionCreators} from 'redux';
+import * as authActions from '../../actions/authActions';
 
   class Login extends React.Component {
   constructor(props, context) {
     super(props, context);
             this.state = {
-              errorMessage: '',
+              errorMessage: this.props.auth?this.props.auth.ErrorMessage:'',
+              auth:{},
               email:'',
               password:''
           };       
     }
  
-  onChange=(event)=>{
+    onChange=(event)=>{
         var key =event.target.name;
         var val =event.target.value;
-       // this.setState(update([key],{$set, val}));
+        this.setState({...this.state, auth:{...this.state.auth, [key]:val}});
     }
     onSubmit=()=>{
-        // database call
-        this.props.history.push('/');
+      
+       this.props.authActions.signIn(this.state.auth)
+        this.props.history.push('/contact');
     }
 
   render() { 
@@ -34,12 +37,12 @@ import { connect } from "react-redux";
                     <h2 className="form-heading center">Enter Login details</h2>
                     <div className="form-section">
                         <div className="input-group full"><label>Email</label>
-                            <div className="effect"><input type="text" name="email" value={this.state.email}  onChange={this.onChange}  /><span></span>
+                            <div className="effect"><input type="text" name="email" value={this.state.auth.email}  onChange={this.onChange}  /><span></span>
                             </div>
                         </div>
 
                         <div className="input-group full"><label>Password</label>
-                            <div className="effect"><input  type="password" name="password"  value={this.state.password} onChange={this.onChange}/><span></span>
+                            <div className="effect"><input  type="password" name="password"  value={this.state.auth.password} onChange={this.onChange}/><span></span>
                             </div>
                         </div>
 
@@ -67,4 +70,11 @@ const mapStateToProps=(state)=>{
   }
 }
 
-  export default connect(mapStateToProps,null)(Login)
+
+const mapDispatchToProps=(dispatch)=>{
+  return{
+     authActions:bindActionCreators(authActions, dispatch)
+  }
+}
+
+  export default connect(mapStateToProps,mapDispatchToProps)(Login)

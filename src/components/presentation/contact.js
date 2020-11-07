@@ -29,8 +29,18 @@ import { connect } from "react-redux";
         this.props.contactActions.add(this.state.contactSection);
     }
 
-  render() { 
+
+    getFieldData=(key)=>{
+        if(this.state.contactSection && this.state.contactSection[key]){
+          return this.state.contactSection[key]
+        }
+        return "";
+    }
+
+    render() { 
     let {contactSection} = this.state;
+    let {getFieldData} = this;
+    
     return (
           <div className="container med contact">
             <div className="section funnel-section">
@@ -38,66 +48,66 @@ import { connect } from "react-redux";
                     <h2 className="form-heading center">Personal Details</h2>
                     <div className="form-section">
                         <div className="input-group"><label>First Name</label>
-                            <div className="effect"><input type="text" name={fieldCd.FirstName} value={contactSection[fieldCd.FirstName]}  onChange={this.onChange}  /><span></span>
+                            <div className="effect"><input type="text" name={fieldCd.FirstName} value={getFieldData(fieldCd.FirstName)}  onChange={this.onChange}  /><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
 
                         <div className="input-group"><label>Last Name</label>
-                            <div className="effect"><input type="text" name={fieldCd.LastName}  value={contactSection[fieldCd.LastName]} onChange={this.onChange}/><span></span>
+                            <div className="effect"><input type="text" name={fieldCd.LastName}  value={getFieldData(fieldCd.LastName)}  onChange={this.onChange}/><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
 
                         <div className="input-group full"><label>Professional Summary</label>
-                            <div className="effect"><input type="text" name={fieldCd.ProfSummary}   value={contactSection[fieldCd.ProfSummary]}  onChange={this.onChange}/><span></span>
+                            <div className="effect"><input type="text" name={fieldCd.ProfSummary}   value={getFieldData(fieldCd.ProfSummary)}  onChange={this.onChange}/><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
 
                         <div className="input-group"><label>Email</label>
-                            <div className="effect"><input type="text"  name={fieldCd.Email}  value={contactSection[fieldCd.Email]} onChange={this.onChange} /><span></span>
+                            <div className="effect"><input type="text"  name={fieldCd.Email}  value={getFieldData(fieldCd.Email)}  onChange={this.onChange} /><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
 
                         <div className="input-group"><label>Phone</label>
-                            <div className="effect"><input type="text"  name={fieldCd.Phone}   value={contactSection[fieldCd.Phone]} onChange={this.onChange}/><span></span>
+                            <div className="effect"><input type="text"  name={fieldCd.Phone}   value={getFieldData(fieldCd.Phone)}  onChange={this.onChange}/><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
 
                         <div className="input-group"><label>Profession</label>
-                            <div className="effect"><input type="text"  name={fieldCd.Profession}  value={contactSection[fieldCd.Profession]} onChange={this.onChange}/><span></span>
+                            <div className="effect"><input type="text"  name={fieldCd.Profession}  value={getFieldData(fieldCd.Profession)}  onChange={this.onChange}/><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
                         <div className="input-group"><label>Street</label>
-                            <div className="effect"><input type="text" name={fieldCd.Street}   value={contactSection[fieldCd.Street]} onChange={this.onChange}/><span></span>
+                            <div className="effect"><input type="text" name={fieldCd.Street}   value={getFieldData(fieldCd.Street)}  onChange={this.onChange}/><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
 
                         <div className="input-group"><label>City</label>
-                            <div className="effect"><input type="text" name={fieldCd.City}  value={contactSection[fieldCd.City]}  onChange={this.onChange}/><span></span>
+                            <div className="effect"><input type="text" name={fieldCd.City}  value={getFieldData(fieldCd.City)}  onChange={this.onChange}/><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
 
                         <div className="input-group"><label>State</label>
-                            <div className="effect"><input type="text"   name={fieldCd.State}  value={contactSection[fieldCd.State]} onChange={this.onChange} /><span></span>
+                            <div className="effect"><input type="text"   name={fieldCd.State}  value={getFieldData(fieldCd.State)}  onChange={this.onChange} /><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
 
 
                         <div className="input-group"><label>Country</label>
-                            <div className="effect"><input type="text"  name={fieldCd.Country}  value={contactSection[fieldCd.Country]}  onChange={this.onChange}/><span></span>
+                            <div className="effect"><input type="text"  name={fieldCd.Country}  value={getFieldData(fieldCd.Country)}  onChange={this.onChange}/><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
                         <div className="input-group"><label>Pin Code</label>
-                            <div className="effect"><input type="text" name={fieldCd.ZipCode}  value={contactSection[fieldCd.ZipCode]}  onChange={this.onChange}/><span></span>
+                            <div className="effect"><input type="text" name={fieldCd.ZipCode}  value={getFieldData(fieldCd.ZipCode)}  onChange={this.onChange}/><span></span>
                             </div>
                             <div className="error"></div>
                         </div>

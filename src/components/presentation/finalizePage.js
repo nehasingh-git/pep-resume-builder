@@ -64,8 +64,8 @@ class Finalize extends React.Component {
 
 const mapStateToProps=(state)=>{
   return {
-      contactSection:state.contactSection,
-      educationSection:state.educationSection,
+      contactSection:state.contact,
+      educationSection:state.education,
       skinCd:state.document.skinCd
   }
 }

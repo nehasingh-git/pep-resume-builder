@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../static/images/logo.png";
+import {connect} from 'react-redux';
 const header = () => {
   return (  
   <header className="header">
@@ -40,4 +41,8 @@ const header = () => {
 
   );
 };
-export default header;
+
+const mapStateToProps=(state)=>{
+  console.log(state)
+}
+export default connect(mapStateToProps,null)(header);
