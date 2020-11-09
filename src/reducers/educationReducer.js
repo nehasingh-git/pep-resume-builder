@@ -6,6 +6,8 @@ export default function educationReducer(state= initialState.educationSection, a
     switch(action.type){
         case actionTypes.ADD_EDUCATION:
            return  update(state,{$set:action.educationSection});
+        case actionTypes.UPDATE_EDUCATION:
+            return  update(state,{$merge:action.educationSection});
         default:
              return state;
         
