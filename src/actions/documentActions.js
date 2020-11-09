@@ -5,20 +5,22 @@ export const setSkinCd=(skinCd)=>{
     return(dispatch,getState,{getFirebase, getFirestore})=>{
         const firestore = getFirestore();
         
-        let docId = uuidv4(); 
+        let id = uuidv4(); 
         let createdDate = new Date();
-        firestore.collection('resumes').add({"document":{"id":docId, "skinCd":skinCd,"createdDate": createdDate}}).then(()=>
-            dispatch({type: actionTypes.SET_SKIN, document:{skinCd : skinCd,id: docId, createdDate:createdDate}})
+        // firestore.collection('resumes').doc(id).set({"document":{"id":id, "skinCd":skinCd,"createdDate": createdDate}}).then(()=>
+        //     dispatch({type: actionTypes.SET_SKIN, document:{skinCd : skinCd,id: id, createdDate:createdDate}})
+        // ).catch((error)=>
+        //     dispatch({type: actionTypes.SET_SKIN, skinCd : 'skin2'})
+        // )  
+        
+        firestore.collection('resumes').add({"document":{"skinCd":skinCd,"createdDate": createdDate}}).then(res=>{
+                dispatch({type: actionTypes.SET_SKIN, document:{skinCd : skinCd, id: res.id, createdDate:createdDate}})
+           }
         ).catch((error)=>
             dispatch({type: actionTypes.SET_SKIN, skinCd : 'skin2'})
-        )      
+        )  
     }   
 }
- 
-// export function setSkinCd(skinCd){
-//     return {type: actionTypes.SET_SKIN, skinCd : skinCd}
-// }
-
 
 export const updateSkinCd=(documentId, skinCd)=>{
     return(dispatch,getState,{getFirebase, getFirestore})=>{

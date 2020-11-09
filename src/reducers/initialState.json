@@ -1,12 +1,10 @@
 {
     "document": {
-        "documentId": null,
+        "id": null,
         "skinCd": "",
         "userId": null
     },
     "educationSection": {
-
-      
     },
     "contactSection": {
        
@@ -19,3 +17,4 @@
 
     }
 }
+

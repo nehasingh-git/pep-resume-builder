@@ -14,8 +14,14 @@ import { connect } from "react-redux";
     super(props, context);
             this.state = {
               contactSection: this.props.contactSection,
-              skinCd: this.props.skinCd
+              document: this.props.document
           };       
+   }
+
+   componentWillMount(){
+       if(!this.state.document || !this.state.document.id){
+         this.props.history.push('/getting-started');
+       }
    }
  
    onChange=(event)=>{
@@ -25,8 +31,15 @@ import { connect } from "react-redux";
     }
     onSubmit=()=>{
         // database call
+
+        if(this.state.contactSection  && this.state.contactSection.id){
+            this.props.contactActions.update(this.state.document.id, this.state.contactSection);
+        }
+        else{
+            this.props.contactActions.add(this.state.document.id, this.state.contactSection);
+        }
+
         this.props.history.push('/education');
-        this.props.contactActions.add(this.state.contactSection);
     }
 
 
@@ -120,7 +133,7 @@ import { connect } from "react-redux";
                 </div>
 
                 <div className="preview-card">
-                    <ResumePreview contactSection={this.state.contactSection} skinCd='skin2'></ResumePreview>
+                    <ResumePreview contactSection={this.state.contactSection} skinCd={this.state.document.skinCd}></ResumePreview>
                 </div>
 
             </div>
@@ -133,7 +146,7 @@ import { connect } from "react-redux";
 const mapStateToProps=(state)=>{
   return {
       contactSection:state.contactSection,
-      skinCd:state.document.skinCd
+      document:state.document
   }
 }
 
