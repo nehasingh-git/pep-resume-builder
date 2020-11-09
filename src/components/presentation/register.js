@@ -5,46 +5,47 @@ import {fieldCd, skinCodes}  from '../../constants/typeCodes';
 
 import ResumePreview from './resumePreview'
 import { connect } from "react-redux";
+import {bindActionCreators} from 'redux';
+import * as authActions from '../../actions/authActions';
 
   class Register extends React.Component {
   constructor(props, context) {
     super(props, context);
             this.state = {
-              errorMessage: '',
-              email:'',
-              password:'',
-              confirmPassword:''
+              auth:{}
           };       
     }
  
-  onChange=(event)=>{
-        var key =event.target.name;
-        var val =event.target.value;
-       // this.setState(update([key],{$set, val}));
-    }
-    onSubmit=()=>{
-        // database call
-        this.props.history.push('/');
-    }
+    onChange=(event)=>{
+      var key =event.target.name;
+      var val =event.target.value;
+      this.setState({...this.state, auth:{...this.state.auth, [key]:val}});
+  }
+  onSubmit=()=>{
+    
+     this.props.authActions.register({email:this.state.auth.email, password:this.state.auth.password})
+     this.props.history.push('/login');
+  }
 
   render() { 
     return (
           <div className="container med contact">
             <div className="section funnel-section">
                 <div className="form-card">
+                  <p>{this.state.auth.errormessage}</p>
                     <h2 className="form-heading center">Enter your details</h2>
                     <div className="form-section">
                         <div className="input-group full"><label>Email</label>
-                            <div className="effect"><input type="text" name="email" value={this.state.email}  onChange={this.onChange}  /><span></span>
+                            <div className="effect"><input type="text" name="email" value={this.state.auth.email}  onChange={this.onChange}  /><span></span>
                             </div>
                         </div>
 
                         <div className="input-group full"><label>Password</label>
-                            <div className="effect"><input  type="password" name="password"  value={this.state.password} onChange={this.onChange}/><span></span>
+                            <div className="effect"><input  type="password" name="password"  value={this.state.auth.password} onChange={this.onChange}/><span></span>
                             </div>
                         </div>
                         <div className="input-group full"><label>Confirm Password</label>
-                            <div className="effect"><input  type="password" name="password"  value={this.state.confirmPassword} onChange={this.onChange}/><span></span>
+                            <div className="effect"><input  type="password" name="password"  value={this.state.auth.confirmPassword} onChange={this.onChange}/><span></span>
                             </div>
                         </div>
 
@@ -68,8 +69,14 @@ import { connect } from "react-redux";
  
 const mapStateToProps=(state)=>{
   return {
-      auth:state.auth
+      auth:state.auth,
   }
 }
 
-  export default connect(mapStateToProps,null)(Register)
+const mapDispatchToProps=(dispatch)=>{
+  return{
+     authActions:bindActionCreators(authActions, dispatch)
+  }
+}
+
+  export default connect(mapStateToProps,mapDispatchToProps)(Register)

@@ -1,4 +1,6 @@
 export const SET_SKIN ="SET_SKIN";
+export const REGISTER_FAILED = "REGISTER_FAILED";
+export const REGISTER = "REGISTER";
 export const CHANGE_FONT_SIZE ="CHANGE_FONT_SIZE";
 export const CHANGE_FONT_FAMILY ="CHANGE_FONT_FAMILY";
 export const SIGN_IN ="SIGN_IN";

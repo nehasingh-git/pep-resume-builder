@@ -8,7 +8,7 @@ import Footer from './components/presentation/footer';
 import LandingPage from './components/presentation/landingPage';
 import GettingStarted from './components/presentation/gettingStarted';
 import Login from './components/presentation/login';
-import Register from './components/presentation/login';
+import Register from './components/presentation/register';
 import AboutUs from './components/presentation/aboutUs';
 import Contacts from './components/presentation/contact';
 import Education from './components/presentation/education';

@@ -7,9 +7,11 @@ import authReducer from './authReducer';
 import documentReducer from './documentReducer';  
 import {combineReducers} from  'redux';
 import { reduxFirestore, firestoreReducer } from 'redux-firestore';
+import { firebaseReducer } from "react-redux-firebase";
 
 const rootReducer = combineReducers({
   firestore: firestoreReducer,
+  firebase:firebaseReducer,
   auth:authReducer,
   contactSection:contactReducer,
   educationSection:educationReducer,

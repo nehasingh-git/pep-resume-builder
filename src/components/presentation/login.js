@@ -12,9 +12,7 @@ import * as authActions from '../../actions/authActions';
     super(props, context);
             this.state = {
               errorMessage: this.props.auth?this.props.auth.ErrorMessage:'',
-              auth:{},
-              email:'',
-              password:''
+              auth:{}
           };       
     }
  
