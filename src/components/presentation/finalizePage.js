@@ -6,6 +6,10 @@ import * as documentActions from '../../actions/documentActions';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 
+import  jsPDF  from "jspdf";
+import html2canvas from 'html2canvas'
+
+
 class Finalize extends React.Component {
 
   constructor(props,context) {
@@ -24,6 +28,22 @@ class Finalize extends React.Component {
     this.props.documentActions.setSkinCd(skinCd);          
     this.props.history.push('contact');
   }
+
+  
+  downloadPdf=()=> {
+    const input = document.getElementById('divToPrint');
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        // pdf.output('dataurlnewwindow');
+        pdf.save("resume.pdf");
+      }).catch(function(error){
+        console.log(error)
+      })
+    ;
+  }
   render() {
     const { educationSection, contactSection } = this.state
     return (
@@ -40,6 +60,7 @@ class Finalize extends React.Component {
               You’ll be able to edit and change this template later!
             </p>
             <div className="styleTemplate ">
+            <button type="button" onClick={()=>this.downloadPdf()}  className='btn-select-theme'>download Resume</button>
               {
               skinCodes.map((value, index) => {
               return( <div className="template-card rounded-border">
