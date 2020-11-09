@@ -120,7 +120,7 @@ import { connect } from "react-redux";
                 </div>
 
                 <div className="preview-card">
-                    <ResumePreview contactSection={this.state.contactSection} ></ResumePreview>
+                    <ResumePreview contactSection={this.state.contactSection} skinCd='skin2'></ResumePreview>
                 </div>
 
             </div>

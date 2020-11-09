@@ -21,7 +21,7 @@ class ResumePreview extends React.PureComponent{
     render() {    
         let {rvContact, rvEducation} = this;
         return (
-            <div className={"resume-preview skin1"}>
+            <div className={this.props.skinCd + " resume-preview "}>
                 <div className={'name-section'}>
                     <p className={'center contact-name text-upper' }> {rvContact(fieldCd.FirstName,' ')  + rvContact(fieldCd.LastName)}  </p>
                     <p className={'center address'}>{rvContact(fieldCd.City,', ') + rvContact(fieldCd.State,', ') +  rvContact(fieldCd.Country,', ') + rvContact(fieldCd.ZipCode,', ')}</p>
