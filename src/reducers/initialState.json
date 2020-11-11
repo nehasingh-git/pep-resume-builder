@@ -2,6 +2,8 @@
     "document": {
         "id": null,
         "skinCd": "",
+        "fontSize":"medium",
+        "fontColor":"blue",
         "userId": null
     },
     "educationSection": {

@@ -526,23 +526,39 @@ h1 span {
 .heading-underline {
     line-height: 20px !important;
     color: #333;
-    background-image: repeating-linear-gradient(180deg, transparent, transparent 19px, #5ae4ce 20px);
+    background-image: repeating-linear-gradient(180deg, transparent, transparent 19px, #yellow 20px);
     font-weight: 600;
     color: #64e5d1;
 }
 
-.finalize-page {
-    .finalize-preview-card {
-        width: 60%;
-    }
-
+.styleTemplate {
+    display: flex;
+    flex-wrap: wrap;
 
     .template-card {
-        flex: 1 0 40%;
-        margin: 2% 25%;
-        height: 300px;
-        overflow: hidden;
+        flex: 1 0 20%;
+        /* explanation below */
+        margin: 12px;
+        height: 360px;
         box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            //  background: rgb(9 51 107 / 89%);
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            /* transition: 0.5s; */
+            /* width: 100%; */
+            z-index: 84;
+            opacity: 0.8;
+        }
+
+        img {
+            flex: 1 0 20%;
+            /* explanation below */
+            margin: 5px;
+            height: 300px;
+            width: 100%;
+        }
 
         .btn-select-theme {
             border: none;
@@ -558,19 +574,85 @@ h1 span {
             left: 16%;
             width: 66%;
             z-index: 1000;
-      
+
             &:hover {
-              display: block;
+                display: block;
             }
-          }
+        }
+    }
+}
+
+.finalize-page {
+    margin-top: 53px;
+
+    .finalize-preview-card {
+        width: 60%;
+        margin: 57px 5% 10px 5%;
     }
 
-    .styleTemplate {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+    .finalize-settings {
+        width: 30%;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.25);
+        padding: 2%;
+        min-height: 100vh;
     }
 
+    .resume-options {
+        margin: 15px 0px;
+
+        .item-picker-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 80%;
+            padding: 0px 10%;
+            .font-picker{
+                height: 20px;
+                margin: 10px 0px;
+                border: 1px solid #ebebeb;
+                padding: 1%;
+                background: #e6fdfb;
+            }
+            .font-family-picker{
+                height: 20px;
+                margin: 10px 0px;
+                border: 1px solid #ebebeb;
+                padding: 1%;
+                background: #e6fdec;
+            }
+            .color-picker {
+                height: 25px;
+                width: 25px;
+                border-radius: 50%;
+            }
+        }
+
+        .blue {
+
+            background-color: #1DBFAF;
+
+        }
+
+        ;
+
+        .teal {
+            background-color: #1EAEDB;
+
+        }
+
+        ;
+
+        .green {
+            background-color: green;
+
+        }
+
+        .yellow {
+            background-color: yellow;
+
+        }
+
+    }
 }
 
 .template-card {
@@ -592,8 +674,4 @@ h1 span {
         /* box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.25); */
         text-shadow: 2px 2px #e2c5c5;
     }
-}
-
-.finalize-settings {
-    width: 40%;
 }

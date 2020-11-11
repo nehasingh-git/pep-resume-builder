@@ -1,8 +1,9 @@
 import React from "react";
 
 import ResumePreview from './resumePreview'
-import {skinCodes, fieldCd} from './../../constants/typeCodes';
+import {skinCodes, fieldCd,colors, fontFamily,fontSize} from './../../constants/typeCodes';
 import * as documentActions from '../../actions/documentActions';
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 
@@ -22,6 +23,7 @@ class Finalize extends React.Component {
   }
 
   componentWillMount(){
+    window.scroll(0, 0);//To move window on Top for Mobile Devices
 
   }
   
@@ -34,8 +36,8 @@ class Finalize extends React.Component {
   }
 
   
-  downloadPdf=()=> {
-    const input = document.getElementById('divToPrint');
+  downloadResume=()=> {
+    const input = document.getElementById('resumePreview');
     html2canvas(input)
       .then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
@@ -46,39 +48,105 @@ class Finalize extends React.Component {
       }).catch(function(error){
         console.log(error)
       })
-    ;
   }
   render() {
     const { educationSection, contactSection } = this.state
     return (
-      <div className="container med finalize-page" >
+      <div className="container full finalize-page" >
         <div className="funnel-section ">
-            <div className="finalize-preview-card ">
+            <div className="finalize-preview-card " id="resumePreview">
               <ResumePreview contactSection={contactSection} educationSection={educationSection} skinCd={this.state.document.skinCd}></ResumePreview>   
             </div>
-            <div className="finalize-settings">
-          <div className="section">
-            <h1 className=" center">
-              Select a resume template to get started</h1>
-            <p className=" center">
-              You’ll be able to edit and change this template later!
-            </p>
-            <div className="styleTemplate ">
-            <button type="button" onClick={()=>this.downloadPdf()}  className='btn-select-theme'>download Resume</button>
-              {
-              skinCodes.map((value, index) => {
-              return( <div className="template-card rounded-border">
+            <div className="finalize-settings center">            
 
-                <i className={this.state.document.skinCd==value?'fa fa-check-circle selected':'hide'} aria-hidden="true"></i>
-                <img className={this.state.document.skinCd==value?'active':''} src={'/images/' + value + '.svg' } />
-                <button className="btn-select-theme" onClick={()=>this.onChange(value)} type='button'>USE TEMPLATE</button>
-              </div>);
-              })
-        }
-      </div>
+               
+                <div className=" download-resume resume-options">
+                  <p className="no-margin" >
+                    Download Resume As PdF
+                  </p>
+                      <a  onClick={()=>this.downloadResume()}  >download Resume</a>
+               </div>
+              
 
-    </div>
-  </div>
+              <div className="divider"></div>
+              <div className=" resume-options">
+                   <p className="no-margin" >
+                    Change Font Family
+                  </p>
+                  <div className="item-picker-container">
+                    {
+                      fontFamily.map((value,index) => {
+                        return (
+                          <div onClick={()=>this.changeFont(value)} className={value + " font-family-picker "}><p>{value}</p></div>
+
+                        )
+
+                      })
+                    }
+                   </div>
+              </div>
+
+              <div className="divider"></div>
+              <div className=" resume-options">
+                 <p className="no-margin" >
+                    Change Font Size
+                  </p>
+                  <div className="item-picker-container">
+                    {
+                      fontSize.map((value,index) => {
+                        return (
+                          <div onClick={()=>this.changeFont(value)} className={value + " font-picker "}><p>{value}</p></div>
+
+                        )
+
+                      })
+                    }
+                   </div>
+
+              </div>
+
+              <div className="divider"></div>
+              <div className=" resume-options">
+                   <p >
+                    Change Color
+                  </p>
+              <div className="item-picker-container">
+                  {
+                    colors.map((value,index) => {
+                      return (
+                        <div onClick={()=>this.downloadPdf(value)} className={value + " color-picker "}></div>
+
+                      )
+
+                    })
+                  }
+                  </div>
+              </div>
+              <div className="divider"></div>
+              <div className=" download-resume resume-options">
+                  <p >
+                    Change Template
+                  </p>
+                      <button type="button" onClick={()=>this.downloadPdf()}  className='btn hvr-float-shadow'>Change Template</button>
+               </div>
+           </div>
+        </div>
+        <div className="container med choose-skin-container section">
+
+        <h4 className=" center">      Select a resume template to get started</h4>
+            <div className="styleTemplate  ">           
+                {
+                  skinCodes.map((value, index) => {
+                  return( <div className="template-card rounded-border">
+
+                    <i className={this.state.document.skinCd==value?'fa fa-check-circle selected':'hide'} aria-hidden="true"></i>
+                    <img className={this.state.document.skinCd==value?'active':''} src={'/images/' + value + '.svg' } />
+                    <button className="btn-select-theme" onClick={()=>this.onChange(value)} type='button'>USE TEMPLATE</button>
+                  </div>);
+                  })
+                }
+
+              </div>
         </div>
       </div>
     );

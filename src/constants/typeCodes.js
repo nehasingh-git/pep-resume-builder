@@ -1,6 +1,11 @@
  
 
-export const skinCodes = ['skin1', 'skin2', 'skin3','skin4' ];        
+export const skinCodes = ['skin1', 'skin2', 'skin3','skin4' ]; 
+
+export const fontSize = ['small', 'medium', 'large' ];    
+
+export const fontFamily = ['Josefin', 'Roboto', 'Montserrat' ];    
+export const colors = ['blue', 'teal', 'green', 'yellow' ];  
 
 export const fieldCd = {
     FirstName: "FNAM",
