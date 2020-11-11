@@ -13,19 +13,16 @@ class GettingStarted extends React.Component{
           }
       }
  
-    //   componentWillReceiveProps(nextProps){
-    //     this.setState({skinCd:nextProps.skinCd})
-    //   }
-      onChange = (skinCd) => {
+ 
+       onChange = async (skinCd) => {
 
         if(this.state.document.id){
-        this.props.documentActions.updateSkinCd(this.state.document.id, skinCd);        
+            await this.props.documentActions.updateSkinCd(this.state.document.id, skinCd);        
         }
         else{
-            this.props.documentActions.setSkinCd(skinCd); 
+            await this.props.documentActions.setSkinCd(skinCd); 
         }
-
-        this.props.history.push('contact');
+        this.props.history.push('/contact');
       }
 
       render(){

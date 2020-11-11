@@ -22,9 +22,8 @@ import * as authActions from '../../actions/authActions';
         this.setState({...this.state, auth:{...this.state.auth, [key]:val}});
     }
     onSubmit=()=>{
-      
        this.props.authActions.signIn(this.state.auth)
-        this.props.history.push('/contact');
+       this.props.history.push('/');
     }
 
   render() { 

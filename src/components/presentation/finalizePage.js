@@ -17,16 +17,20 @@ class Finalize extends React.Component {
     this.state = {
       educationSection: this.props.educationSection,
       contactSection:this.props.contactSection,
-      skinCd:this.props.skinCd
+      document:this.props.document
     }
   }
 
-  onChange = (event) => {
-    this.setState({...this.state, educationSection: {...this.state.educationSection,  [event.target.name]: event.target.value  } })
+  componentWillMount(){
+
   }
+  
+  componentWillReceiveProps(nextProps){
+    this.setState({document:nextProps.document});
+  }
+
   onChange = (skinCd) => {
-    this.props.documentActions.setSkinCd(skinCd);          
-    this.props.history.push('contact');
+    this.props.documentActions.updateSkinCd(this.state.document.id, skinCd);          
   }
 
   
@@ -50,7 +54,7 @@ class Finalize extends React.Component {
       <div className="container med finalize-page" >
         <div className="funnel-section ">
             <div className="finalize-preview-card ">
-              <ResumePreview contactSection={contactSection} educationSection={educationSection}></ResumePreview>   
+              <ResumePreview contactSection={contactSection} educationSection={educationSection} skinCd={this.state.document.skinCd}></ResumePreview>   
             </div>
             <div className="finalize-settings">
           <div className="section">
@@ -65,8 +69,8 @@ class Finalize extends React.Component {
               skinCodes.map((value, index) => {
               return( <div className="template-card rounded-border">
 
-                <i className={this.state.skinCd==value?'fa fa-check-circle selected':'hide'} aria-hidden="true"></i>
-                <img className={this.state.skinCd==value?'active':''} src={'/images/' + value + '.svg' } />
+                <i className={this.state.document.skinCd==value?'fa fa-check-circle selected':'hide'} aria-hidden="true"></i>
+                <img className={this.state.document.skinCd==value?'active':''} src={'/images/' + value + '.svg' } />
                 <button className="btn-select-theme" onClick={()=>this.onChange(value)} type='button'>USE TEMPLATE</button>
               </div>);
               })
@@ -85,9 +89,9 @@ class Finalize extends React.Component {
 
 const mapStateToProps=(state)=>{
   return {
-      contactSection:state.contact,
-      educationSection:state.education,
-      skinCd:state.document.skinCd
+      contactSection:state.contactSection,
+      educationSection:state.educationSection,
+      document:state.document
   }
 }
 

@@ -15,18 +15,21 @@ class Education extends React.Component {
     this.state = {
       educationSection: this.props.educationSection,
       contactSection:this.props.contactSection,
-      skinCd:this.props.skinCd
+      document:this.props.document
     }
   }
 
   onChange = (event) => {
     this.setState({...this.state, educationSection: {...this.state.educationSection,  [event.target.name]: event.target.value  } })
   }
-
-  onSubmit = (e) => {
-   console.log(this.state.educationSection);
-   this.props.history.push('/finalize')
-   this.props.educationActions.add(this.state.educationSection);
+  onSubmit = async(e) => {
+    //console.log(this.state.educationSection);
+    if(this.state.educationSection &&  this.state.educationSection.id){
+        await this.props.educationActions.update(this.state.document.id, this.state.educationSection);
+    }else{
+        await this.props.educationActions.add(this.state.document.id, this.state.educationSection);
+    }
+     this.props.history.push('/finalize')
   }
   render() {
     const { educationSection, contactSection } = this.state
@@ -85,7 +88,7 @@ class Education extends React.Component {
             </div>
           </div>
           <div className="preview-card">
-            <ResumePreview contactSection={contactSection} educationSection={educationSection}></ResumePreview>            
+            <ResumePreview contactSection={contactSection} educationSection={educationSection} skinCd={this.state.document.skinCd}></ResumePreview>            
           </div>
         </div>
       </div>
@@ -99,7 +102,7 @@ const mapStateToProps=(state)=>{
   return {
       contactSection:state.contactSection,
       educationSection:state.educationSection,
-      skinCd:state.document.skinCd
+      document:state.document
   }
 }
 

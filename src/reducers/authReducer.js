@@ -6,15 +6,12 @@ import update from 'immutability-helper';
 export default function authReducer(state= initialState.auth, action){
     switch(action.type){
         case actionTypes.SIGN_IN:
-           console.log(action.data)
            return  update(state,{ErrorMessage:{$set:''}}); 
         case actionTypes.SIGN_IN_FAILED:
            return  update(state,{ErrorMessage:{$set:action.error}});
         case actionTypes.REGISTER:
-            console.log(action.data)
             return  update(state,{ErrorMessage:{$set:''}}); 
         case actionTypes.REGISTER_FAILED:
-            console.log(action.data)
             return  update(state,{ErrorMessage:{$set:''}}); 
             default:
              return state;

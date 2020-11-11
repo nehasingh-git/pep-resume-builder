@@ -29,14 +29,14 @@ import { connect } from "react-redux";
         var val =event.target.value;
         this.setState({contactSection:update(this.state.contactSection,{$merge: {[key]:val}})});
     }
-    onSubmit=()=>{
+    onSubmit= async()=>{
         // database call
 
         if(this.state.contactSection  && this.state.contactSection.id){
-            this.props.contactActions.update(this.state.document.id, this.state.contactSection);
+           await this.props.contactActions.update(this.state.document.id, this.state.contactSection);
         }
         else{
-            this.props.contactActions.add(this.state.document.id, this.state.contactSection);
+            await this.props.contactActions.add(this.state.document.id, this.state.contactSection);
         }
 
         this.props.history.push('/education');
