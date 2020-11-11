@@ -1,10 +1,5 @@
 import * as actionTypes from './actionTypes';
 
-// export function add(educationSection){
-//     return {type: actionTypes.ADD_EDUCATION, educationSection}
-// }
-
-
 export const add=(documentId, educationSection)=>{
     return async (dispatch,getState,{getFirebase, getFirestore})=>{
         const firestore = getFirestore();
