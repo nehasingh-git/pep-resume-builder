@@ -19,6 +19,13 @@ class Education extends React.Component {
     }
   }
 
+  componentWillMount(){
+    window.scroll(0, 0);//To move window on Top for Mobile Devices
+    if(!this.state.document || !this.state.document.id){
+      this.props.history.push('/getting-started');
+    }
+}
+
   onChange = (event) => {
     this.setState({...this.state, educationSection: {...this.state.educationSection,  [event.target.name]: event.target.value  } })
   }
@@ -33,6 +40,7 @@ class Education extends React.Component {
   }
   render() {
     const { educationSection, contactSection } = this.state
+    
     return (
       <div className="container med education" >
         <div className="section funnel-section">
@@ -88,7 +96,7 @@ class Education extends React.Component {
             </div>
           </div>
           <div className="preview-card">
-            <ResumePreview contactSection={contactSection} educationSection={educationSection} skinCd={this.state.document.skinCd}></ResumePreview>            
+            <ResumePreview contactSection={contactSection} educationSection={educationSection} document={this.state.document}></ResumePreview>            
           </div>
         </div>
       </div>

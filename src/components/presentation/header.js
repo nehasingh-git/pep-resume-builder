@@ -10,7 +10,7 @@ function LoggedIn(auth) {
         <ul>
             <li className="signin ">
               <NavLink className="  " to="/register">
-               Logged in as {uid}
+               {auth.auth.email}
               </NavLink>
             </li>
             <li className="signin"> 

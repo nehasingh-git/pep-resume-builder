@@ -14,11 +14,13 @@ import { connect } from "react-redux";
     super(props, context);
             this.state = {
               contactSection: this.props.contactSection,
-              document: this.props.document
+              document: this.props.document,
+              educationSection:this.props.educationSection
           };       
    }
 
    componentWillMount(){
+       window.scroll(0, 0);//To move window on Top for Mobile Devices
        if(!this.state.document || !this.state.document.id){
          this.props.history.push('/getting-started');
        }
@@ -133,7 +135,7 @@ import { connect } from "react-redux";
                 </div>
 
                 <div className="preview-card">
-                    <ResumePreview contactSection={this.state.contactSection} skinCd={this.state.document.skinCd}></ResumePreview>
+                    <ResumePreview contactSection={this.state.contactSection} educationSection={this.state.educationSection} document={this.state.document}></ResumePreview>
                 </div>
 
             </div>
@@ -146,6 +148,7 @@ import { connect } from "react-redux";
 const mapStateToProps=(state)=>{
   return {
       contactSection:state.contactSection,
+      educationSection:state.educationSection,
       document:state.document
   }
 }
@@ -153,7 +156,7 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-       contactActions:bindActionCreators(contactActions, dispatch)
+        contactActions:bindActionCreators(contactActions, dispatch)
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Contact)

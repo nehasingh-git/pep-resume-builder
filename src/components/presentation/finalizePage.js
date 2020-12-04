@@ -18,15 +18,19 @@ class Finalize extends React.Component {
     this.state = {
       educationSection: this.props.educationSection,
       contactSection:this.props.contactSection,
-      document:this.props.document
+      document:this.props.document,
+      showTemplate:false
     }
   }
-
+ 
   componentWillMount(){
-    window.scroll(0, 0);//To move window on Top for Mobile Devices
+    // window.scroll(0, 0);//To move window on Top for Mobile Devices
+    // if(!this.state.document || !this.state.document.id){
+    //   this.props.history.push('/getting-started');
+    // }
+}
 
-  }
-  
+
   componentWillReceiveProps(nextProps){
     this.setState({document:nextProps.document});
   }
@@ -35,7 +39,19 @@ class Finalize extends React.Component {
     this.props.documentActions.updateSkinCd(this.state.document.id, skinCd);          
   }
 
-  
+  onFontFamilyChange = (font) => {
+    this.props.documentActions.setFontFamily(this.state.document.id, font);          
+  }
+  onFontSizeChange = (font) => {
+    this.props.documentActions.setFontSize(this.state.document.id, font);          
+  }
+
+  onColorChange = (color) => {
+    this.props.documentActions.setColor(this.state.document.id, color);          
+  }
+  showChangeTemplate=()=>{
+    this.setState({showTemplate:!this.state.showTemplate});
+  }
   downloadResume=()=> {
     const input = document.getElementById('resumePreview');
     html2canvas(input)
@@ -49,13 +65,14 @@ class Finalize extends React.Component {
         console.log(error)
       })
   }
+
   render() {
     const { educationSection, contactSection } = this.state
     return (
       <div className="container full finalize-page" >
         <div className="funnel-section ">
             <div className="finalize-preview-card " id="resumePreview">
-              <ResumePreview contactSection={contactSection} educationSection={educationSection} skinCd={this.state.document.skinCd}></ResumePreview>   
+              <ResumePreview contactSection={contactSection} educationSection={educationSection} document={this.state.document}></ResumePreview>   
             </div>
             <div className="finalize-settings center">            
 
@@ -77,7 +94,7 @@ class Finalize extends React.Component {
                     {
                       fontFamily.map((value,index) => {
                         return (
-                          <div onClick={()=>this.changeFont(value)} className={value + " font-family-picker "}><p>{value}</p></div>
+                          <div onClick={()=>this.onFontFamilyChange(value)} className={value + " font-family-picker "}><p>{value}</p></div>
 
                         )
 
@@ -95,7 +112,7 @@ class Finalize extends React.Component {
                     {
                       fontSize.map((value,index) => {
                         return (
-                          <div onClick={()=>this.changeFont(value)} className={value + " font-picker "}><p>{value}</p></div>
+                          <div onClick={()=>this.onFontSizeChange(value)} className={value + " font-picker "}><p>{value}</p></div>
 
                         )
 
@@ -114,7 +131,7 @@ class Finalize extends React.Component {
                   {
                     colors.map((value,index) => {
                       return (
-                        <div onClick={()=>this.downloadPdf(value)} className={value + " color-picker "}></div>
+                        <div onClick={()=>this.onColorChange(value)} className={value + " color-picker "}></div>
 
                       )
 
@@ -127,17 +144,17 @@ class Finalize extends React.Component {
                   <p >
                     Change Template
                   </p>
-                      <button type="button" onClick={()=>this.downloadPdf()}  className='btn hvr-float-shadow'>Change Template</button>
+                      <button type="button" onClick={()=>this.showChangeTemplate()}  className='btn hvr-float-shadow'>Change Template</button>
                </div>
            </div>
         </div>
-        <div className="container med choose-skin-container section">
+        <div className={" choose-skin-container section  "+ (this.state.showTemplate?"":"hide")}>
+          <h1>Choose Template <i className="fa fa-times i-close"  onClick={()=>this.showChangeTemplate()}></i></h1>
 
-        <h4 className=" center">      Select a resume template to get started</h4>
             <div className="styleTemplate  ">           
                 {
                   skinCodes.map((value, index) => {
-                  return( <div className="template-card rounded-border">
+                  return( <div className="template-card rounded-border finalize">
 
                     <i className={this.state.document.skinCd==value?'fa fa-check-circle selected':'hide'} aria-hidden="true"></i>
                     <img className={this.state.document.skinCd==value?'active':''} src={'/images/' + value + '.svg' } />
@@ -151,6 +168,7 @@ class Finalize extends React.Component {
       </div>
     );
   }
+
 }
 
   

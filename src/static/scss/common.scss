@@ -428,33 +428,10 @@ h1 span {
 
 
 
-.skin1 {
-    font-family: 'Source Sans Pro', sans-serif;
-    padding: 2%;
-    font-weight: 300;
-}
 
-.skin1 h3 {
-    margin: 10px
-}
 
-.skin1 p {
-    font-size: 1.6rem;
-    line-height: 1.6rem;
-    margin: 6px;
-}
 
-.skin1 .resume-name {
-    color: #1EAEDB;
-}
 
-.heading-underline {
-    line-height: 20px !important;
-    color: #333;
-    background-image: repeating-linear-gradient(180deg, transparent, transparent 19px, #5ae4ce 20px);
-    font-weight: 400;
-    color: #64e5d1;
-}
 
 .upper {
     text-transform: uppercase;
@@ -472,64 +449,7 @@ h1 span {
     padding: 0px !important;
 }
 
-.skin2 {
-    font-family: 'Nunito', sans-serif;
-    padding: 2%;
-    font-weight: 300;
-}
 
-.skin2 .resume-header {
-    display: flex;
-    flex-direction: row;
-}
-
-.skin2 .resume-name {
-    font-size: 2.2rem;
-}
-
-.skin2 .name-profession {
-    width: 60%;
-}
-
-.skin2 .contact-details {
-    width: 40%;
-
-}
-
-.skin2 h3 {
-    margin: 10px
-}
-
-.skin2 h4 {
-    font-size: 2rem;
-}
-
-.skin2 p {
-    font-size: 1.6rem;
-    line-height: 2rem;
-    margin: 6px;
-}
-
-.skin2 .resume-name {
-    color: #1EAEDB;
-}
-
-.skin2 .details {
-    display: flex;
-    flex-direction: row;
-}
-
-.skin2 .details .detail-section {
-    width: 50%;
-}
-
-.heading-underline {
-    line-height: 20px !important;
-    color: #333;
-    background-image: repeating-linear-gradient(180deg, transparent, transparent 19px, #yellow 20px);
-    font-weight: 600;
-    color: #64e5d1;
-}
 
 .styleTemplate {
     display: flex;
@@ -541,46 +461,58 @@ h1 span {
         margin: 12px;
         height: 360px;
         box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+       
+
+        &.finalize {
+            flex: 10 0 20%;
+            margin: 29px;
+            height: 285px;
+            box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+           
+        }
+
+
+    }
+
+    &:hover {
+        //  background: rgb(9 51 107 / 89%);
+        -webkit-transition: 0.5s;
+        -o-transition: 0.5s;
+        /* transition: 0.5s; */
+        /* width: 100%; */
+        z-index: 84;
+        opacity: 0.8;
+    }
+
+    img {
+        flex: 1 0 20%;
+        /* explanation below */
+        margin: 5px;
+        height: 300px;
+        width: 100%;
+    }
+
+    .btn-select-theme {
+        border: none;
+        border: none;
+        padding: 5%;
+        border-radius: 5px;
+        background: linear-gradient(45deg, #1DBFAF 0, #1EAEDB 85%, #1EAEDB 100%);
+        color: white;
+        border-radius: 0.6rem;
+        position: relative;
+        top: -190px;
+        align-items: center;
+        left: 16%;
+        width: 66%;
+        z-index: 1000;
 
         &:hover {
-            //  background: rgb(9 51 107 / 89%);
-            -webkit-transition: 0.5s;
-            -o-transition: 0.5s;
-            /* transition: 0.5s; */
-            /* width: 100%; */
-            z-index: 84;
-            opacity: 0.8;
-        }
-
-        img {
-            flex: 1 0 20%;
-            /* explanation below */
-            margin: 5px;
-            height: 300px;
-            width: 100%;
-        }
-
-        .btn-select-theme {
-            border: none;
-            border: none;
-            padding: 5%;
-            border-radius: 5px;
-            background: linear-gradient(45deg, #1DBFAF 0, #1EAEDB 85%, #1EAEDB 100%);
-            color: white;
-            border-radius: 0.6rem;
-            position: relative;
-            top: -190px;
-            align-items: center;
-            left: 16%;
-            width: 66%;
-            z-index: 1000;
-
-            &:hover {
-                display: block;
-            }
+            display: block;
         }
     }
 }
+
 
 .finalize-page {
     margin-top: 53px;
@@ -606,20 +538,23 @@ h1 span {
             justify-content: space-between;
             width: 80%;
             padding: 0px 10%;
-            .font-picker{
+
+            .font-picker {
                 height: 20px;
                 margin: 10px 0px;
                 border: 1px solid #ebebeb;
                 padding: 1%;
                 background: #e6fdfb;
             }
-            .font-family-picker{
+
+            .font-family-picker {
                 height: 20px;
                 margin: 10px 0px;
                 border: 1px solid #ebebeb;
                 padding: 1%;
                 background: #e6fdec;
             }
+
             .color-picker {
                 height: 25px;
                 width: 25px;
@@ -643,12 +578,12 @@ h1 span {
         ;
 
         .green {
-            background-color: green;
+            background-color: #3ca23c;
 
         }
 
         .yellow {
-            background-color: yellow;
+            background-color: #ffbf39;
 
         }
 

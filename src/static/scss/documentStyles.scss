@@ -1,28 +1,127 @@
-.skin1{
+.skin1 {
+
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 2%;
+    font-weight: 300;
+
+    .heading {
+        font-size: 1.7rem;
+        width: 100%;
+
+    }
+
+    h3 {
+        margin: 10px
+    }
+
+    p {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        margin: 6px;
+    }
 
     padding:3%;
-    .contact-name{
-        color: cornflowerblue;
-       
+
+    .contact-name {
+
         font-size: 3rem;
         font-weight: bold;
         padding: 5px 0px;
     }
-    .address{
+
+    .address {
         padding: 5px 0px;
     }
-    .educationSection{
 
-        .heading{
-            color: darkcyan;
-            font-size: 1.7rem;
-            width: 100%;
-            
-        }
+    .educationSection {}
+}
+
+.divider {
+    width: 100%;
+    border-bottom: 1px solid darkcyan;
+}
+
+.blue-text {
+    color: #1DBFAF
+}
+
+.teal-text {
+    color: #1EAEDB
+}
+
+.green-text {
+    color: #3ca23c
+}
+
+.yellow-text {
+    color: #ffbf39
+}
+
+
+.skin2 {
+    font-family: 'Nunito', sans-serif;
+    padding: 2%;
+    font-weight: 300;
+
+    .resume-header {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .resume-name {
+        font-size: 2.2rem;
+    }
+
+    .name-profession {
+        width: 60%;
+    }
+
+    .contact-details {
+        width: 40%;
+
+    }
+
+    h3 {
+        margin: 10px
+    }
+
+    h4 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+        line-height: 2rem;
+        margin: 6px;
+    }
+
+
+    .details {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .details .detail-section {
+        width: 50%;
     }
 }
 
-.divider{
-    width: 100%;
-    border-bottom: 1px solid darkcyan;
+.choose-skin-container{
+    position: fixed;
+    bottom:-80px;
+    background:#ebebeb;
+    .i-close{
+        color: red;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        font-size: 2rem;
+    }
+}
+
+.heading-underline {
+    line-height: 20px !important;
+    //color: #333;
+    background-image: repeating-linear-gradient(180deg, transparent, transparent 19px, #4d1717 20px);
+    font-weight: 600;
 }
